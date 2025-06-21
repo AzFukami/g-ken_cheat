@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>G検定 検索機能付きチートシート (Gemini再搭載・修正版)</title>
+    <title>G検定 最強チートシート (全解説搭載版)</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -39,19 +39,19 @@
             border-radius: 4px;
             font-size: 0.9em;
         }
-        #geminiResponse strong, #geminiResponse b {
+        #detailedExplanation strong, #detailedExplanation b {
             color: #67e8f9;
         }
-        #geminiResponse ul {
+        #detailedExplanation ul {
             list-style-type: disc;
             margin-left: 1.5rem;
             margin-top: 0.5rem;
             margin-bottom: 0.5rem;
         }
-        #geminiResponse li {
+        #detailedExplanation li {
              margin-bottom: 0.25rem;
         }
-         #geminiResponse h4 {
+         #detailedExplanation h4 {
             font-size: 1.1rem;
             font-weight: bold;
             color: #93c5fd; /* blue-300 */
@@ -67,7 +67,7 @@
         <!-- ヘッダー部分 -->
         <header class="text-center mb-8">
             <h1 class="text-3xl md:text-4xl font-bold text-cyan-400 mb-2">G検定 最強チートシート 🚀</h1>
-            <p class="text-gray-400">AIに質問して、AIの力で合格を掴もう！【Gemini再搭載版】</p>
+            <p class="text-gray-400">全用語の詳細解説つき！【最終決定版】</p>
         </header>
 
         <!-- 検索・フィルタリング部分 -->
@@ -105,29 +105,25 @@
     </div>
 
     <!-- Modal -->
-    <div id="geminiModal" class="fixed inset-0 bg-black bg-opacity-70 z-50 hidden items-center justify-center p-4 transition-opacity duration-300">
+    <div id="explanationModal" class="fixed inset-0 bg-black bg-opacity-70 z-50 hidden items-center justify-center p-4 transition-opacity duration-300">
         <div class="bg-gray-800 rounded-lg shadow-2xl w-full max-w-2xl max-h-[90vh] flex flex-col transform transition-transform duration-300 scale-95">
             <header class="flex justify-between items-center p-4 border-b border-gray-700 flex-shrink-0">
                 <h2 class="text-xl font-bold text-cyan-400 flex items-center gap-2">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-cyan-400"><path d="M10 3L8 21h1l2-18-4 8 4-5-2 15h1l2-18"/></svg>
-                    <span id="modalTitle">AIによる詳細解説</span>
+                    <span id="modalTitle">詳細解説</span>
                 </h2>
                 <button id="closeModalBtn" class="text-gray-400 hover:text-white text-3xl leading-none">&times;</button>
             </header>
             <div class="p-6 overflow-y-auto" id="modalContentArea">
-                 <!-- Loading Spinner -->
-                <div id="loadingSpinner" class="flex flex-col justify-center items-center h-40">
-                     <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-cyan-400"></div>
-                     <p class="mt-4 text-gray-400">Geminiが回答を生成中...</p>
-                </div>
                 <!-- Response will be injected here -->
-                <div id="geminiResponse" class="text-gray-300 leading-relaxed space-y-4"></div>
+                <div id="detailedExplanation" class="text-gray-300 leading-relaxed space-y-4"></div>
             </div>
         </div>
     </div>
 
 
     <script>
+        // 用語データ (真・最終形態版)
         const terms = [
             // --- 歴史・人物 ---
             { term: 'アラン・チューリング', category: '歴史・人物', description: '「計算機科学の父」「人工知能の父」と呼ばれる。機械が知的かどうかを判定する<strong>【活用例】</strong>「チューリングテスト」を提唱。第二次世界大戦中、ドイツの暗号機エニグマの解読に貢献したことでも知られる。' },
