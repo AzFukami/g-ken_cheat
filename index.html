@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>G検定 最強チートシート (全解説表示・最終決定版)</title>
+    <title>G検定 最強チートシート (計算問題対策版)</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -59,6 +59,12 @@
             border-bottom: 1px solid #374151;
             padding-bottom: 0.25rem;
         }
+        .highlight {
+            background-color: #facc15; /* yellow-400 */
+            color: #1f2937; /* gray-800 */
+            font-weight: bold;
+            border-radius: 2px;
+        }
     </style>
 </head>
 <body class="bg-gray-900 text-gray-200">
@@ -67,7 +73,7 @@
         <!-- ヘッダー部分 -->
         <header class="text-center mb-8">
             <h1 class="text-3xl md:text-4xl font-bold text-cyan-400 mb-2">G検定 最強チートシート 🚀</h1>
-            <p class="text-gray-400">全用語の詳細解説つき！【最終決定版】</p>
+            <p class="text-gray-400">計算問題対策つき！【最終決定版】</p>
         </header>
 
         <!-- 検索・フィルタリング部分 -->
@@ -79,6 +85,7 @@
                 <!-- カテゴリフィルター -->
                 <div id="categoryFilters" class="flex flex-wrap justify-center gap-2 mt-4">
                     <button class="filter-btn active" data-category="all">すべて</button>
+                    <button class="filter-btn" data-category="計算問題">計算問題</button>
                     <button class="filter-btn" data-category="歴史・人物">歴史・人物</button>
                     <button class="filter-btn" data-category="機械学習">機械学習</button>
                     <button class="filter-btn" data-category="ディープラーニング">ディープラーニング</button>
@@ -106,6 +113,11 @@
 
     <script>
         const termsData = [
+            // --- 計算問題 ---
+            { term: '活性化関数(ReLU)の計算', category: '計算問題', description: '入力値が0より大きければそのまま出力し、0以下なら0を出力する関数。', detailed: `<h4>ReLU(正規化線形ユニット)の計算方法</h4><p>非常にシンプルな計算です。</p><ul><li>入力値 x > 0 の場合: 出力は x</li><li>入力値 x <= 0 の場合: 出力は 0</li></ul><p><strong>【計算例】</strong><br>入力が「3」なら出力は「3」。<br>入力が「-2」なら出力は「0」。<br>ニューラルネットワークで、勾配消失問題を解決するために広く使われています。</p>` },
+            { term: '混同行列からの指標計算', category: '計算問題', description: '分類モデルの性能を評価する4つの指標（正解率、適合率、再現率、F値）の計算。', detailed: `<h4>混同行列からの指標計算</h4><p>TP:真陽性, TN:真陰性, FP:偽陽性, FN:偽陰性とします。</p><ul><li><strong>正解率 (Accuracy):</strong> 全体の中で正解した割合。<br><code>(TP + TN) / (TP + TN + FP + FN)</code></li><li><strong>適合率 (Precision):</strong> 陽性と予測した中で、実際に陽性だった割合。<br><code>TP / (TP + FP)</code></li><li><strong>再現率 (Recall):</strong> 実際に陽性であるものの中で、正しく陽性と予測できた割合。<br><code>TP / (TP + FN)</code></li><li><strong>F値 (F-measure):</strong> 適合率と再現率の調和平均。<br><code>2 * (Precision * Recall) / (Precision + Recall)</code></li></ul><p><strong>【G検定でのポイント】</strong>どの指標がどの計算式に対応するかを正確に覚えることが重要です。</p>` },
+            { term: 'CNNの出力サイズ計算', category: '計算問題', description: '畳み込み層を通過した後の特徴マップのサイズを計算する。', detailed: `<h4>CNN出力サイズ計算</h4><p>入力サイズをI, フィルタサイズをF, パディングをP, ストライドをSとすると、出力サイズOは以下の式で計算できます。</p><p><code>O = (I - F + 2P) / S + 1</code></p><p><strong>【計算例】</strong><br>入力画像が 28x28, フィルタが 3x3, パディングが 1, ストライドが 1 の場合...<br><code>(28 - 3 + 2*1) / 1 + 1 = 28</code><br>出力サイズは 28x28 になります。</p><h4>G検定でのポイント</h4><p>この計算式は頻出です。特にパディングとストライドがサイズにどう影響するかを理解しておきましょう。</p>` },
+            
             // --- 歴史・人物 ---
             { term: 'アラン・チューリング', category: '歴史・人物', description: '「計算機科学の父」「人工知能の父」と呼ばれる。機械が知的かどうかを判定する<strong>【活用例】</strong>「チューリングテスト」を提唱。第二次世界大戦中、ドイツの暗号機エニグマの解読に貢献したことでも知られる。', detailed: `<h4>アラン・チューリング 詳細解説</h4><p>G検定では「AIの父」として必ず問われる人物です。彼が提唱した「チューリングテスト」は、機械に知能があるかを判定する思考実験で、AIの哲学的な議論の基礎となりました。また、計算可能なものはすべて「チューリングマシン」という仮想機械で実行できるという概念も提唱し、これが現代のコンピュータの理論的基礎となっています。</p>` },
             { term: 'ジョン・マッカーシー', category: '歴史・人物', description: '1956年のダートマス会議で「人工知能(Artificial Intelligence)」という言葉を初めて使用した人物。<strong>【活用例】</strong>AI研究用のプログラミング言語LISPを開発。', detailed: `<h4>ジョン・マッカーシー 詳細解説</h4><p>1956年に開催された「ダートマス会議」の名付け親であり、この会議で初めて「人工知能(AI)」という学術分野を提唱した中心人物です。そのため「AIの父」とも呼ばれます。また、AI研究で広く使われたプログラミング言語「LISP」を開発したことでも知られています。</p>` },
@@ -235,6 +247,7 @@
                 card.className = 'bg-gray-800 rounded-lg shadow-lg p-6 transition-all duration-300 hover:shadow-cyan-500/20 hover:-translate-y-1 flex flex-col relative';
                 
                 const categoryColor = {
+                    '計算問題': 'bg-red-500/20 text-red-300',
                     '歴史・人物': 'bg-rose-500/20 text-rose-300',
                     '機械学習': 'bg-amber-500/20 text-amber-300',
                     'ディープラーニング': 'bg-cyan-500/20 text-cyan-300',
@@ -244,15 +257,28 @@
                     '応用分野': 'bg-emerald-500/20 text-emerald-300',
                 };
 
+                let finalTerm = term.term;
+                let finalDescription = term.description;
+                let finalDetailed = term.detailed;
+                const searchTerm = searchInput.value.trim();
+
+                if (searchTerm) {
+                    const regex = new RegExp(searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi');
+                    const highlightWrapper = (match) => `<span class="highlight">${match}</span>`;
+                    finalTerm = finalTerm.replace(regex, highlightWrapper);
+                    finalDescription = finalDescription.replace(regex, highlightWrapper);
+                    finalDetailed = finalDetailed.replace(regex, highlightWrapper);
+                }
+
                 // Add the detailed explanation directly into the card's HTML
                 card.innerHTML = `
                     <div class="flex justify-between items-start mb-2">
-                        <h3 class="text-xl font-bold text-gray-100">${term.term}</h3>
+                        <h3 class="text-xl font-bold text-gray-100">${finalTerm}</h3>
                         <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full flex-shrink-0 ml-2 ${categoryColor[term.category] || 'bg-gray-700'}">${term.category}</span>
                     </div>
                     <div class="text-gray-400 font-light leading-relaxed flex-grow term-description">
-                        <p>${term.description}</p>
-                        <div class="mt-4 detailed-explanation">${term.detailed}</div>
+                        <p>${finalDescription}</p>
+                        <div class="mt-4 detailed-explanation">${finalDetailed}</div>
                     </div>
                 `;
                 termList.appendChild(card);
@@ -261,11 +287,13 @@
 
         // フィルタリングとレンダリングを実行する関数
         const filterAndRender = () => {
-            const searchTerm = searchInput.value.toLowerCase();
+            const searchTerm = searchInput.value.toLowerCase().trim();
             
             let filteredTerms = termsData.filter(term => {
                 const inCategory = currentCategory === 'all' || term.category === currentCategory;
-                // Update search to include detailed explanation text
+                if (!searchTerm) {
+                    return inCategory;
+                }
                 const inSearch = term.term.toLowerCase().includes(searchTerm) || 
                                  term.description.toLowerCase().includes(searchTerm) ||
                                  term.detailed.toLowerCase().includes(searchTerm);
