@@ -123,8 +123,7 @@
 
 
     <script>
-        // 用語データ (真・最終形態版)
-        const terms = [
+        const termsData = [
             // --- 歴史・人物 ---
             { term: 'アラン・チューリング', category: '歴史・人物', description: '「計算機科学の父」「人工知能の父」と呼ばれる。機械が知的かどうかを判定する<strong>【活用例】</strong>「チューリングテスト」を提唱。第二次世界大戦中、ドイツの暗号機エニグマの解読に貢献したことでも知られる。' },
             { term: 'ジョン・マッカーシー', category: '歴史・人物', description: '1956年のダートマス会議で「人工知能(Artificial Intelligence)」という言葉を初めて使用した人物。<strong>【活用例】</strong>AI研究用のプログラミング言語LISPを開発。' },
@@ -230,15 +229,24 @@
             { term: 'RPA (Robotic Process Automation)', category: '応用分野', description: 'ソフトウェアロボットを用いて、PC上の定型的な事務作業を自動化する技術。AIと組み合わせることで、より高度で非定型な業務の自動化も可能になる。'}
         ];
 
+        // 各用語に対する詳細解説データ
+        const detailedExplanations = {
+            'アラン・チューリング': `<h4>アラン・チューリング 詳細解説</h4><p>G検定では「AIの父」として必ず問われる人物です。彼が提唱した「チューリングテスト」は、機械に知能があるかを判定する思考実験で、AIの哲学的な議論の基礎となりました。また、計算可能なものはすべて「チューリングマシン」という仮想機械で実行できるという概念も提唱し、これが現代のコンピュータの理論的基礎となっています。</p>`,
+            '強化学習': `<h4>強化学習 詳細解説</h4><p>強化学習は、機械学習の一分野で、ある<strong>環境(Environment)</strong>の中にいる<strong>エージェント(Agent)</strong>が、試行錯誤を通じて<strong>累積報酬(Cumulative Reward)</strong>を最大化するような<strong>方策(Policy)</strong>、つまり行動のルールを学習する手法です。</p><p>G検定では、以下のキーワードが重要になります。</p><ul><li><strong>エージェント:</strong> 環境の中で行動する主体（例：ゲームのキャラクター、ロボット）。</li><li><strong>環境:</strong> エージェントが行動する世界そのもの。</li><li><strong>行動(Action):</strong> エージェントが取りうる選択肢。</li><li><strong>状態(State):</strong> ある時点での環境の状況。</li><li><strong>報酬(Reward):</strong> エージェントの行動の結果として得られるフィードバック。良い行動には正の報酬、悪い行動には負の報酬（罰）が与えられます。</li><li><strong>方策(Policy):</strong> ある状態で、どの行動を取るかを決める戦略やルールのこと。</li><li><strong>価値関数(Value Function):</strong> ある状態や、ある状態である行動を取った場合に、将来的に得られる累積報酬の期待値。これを最大化することが目標となります。</li></ul><h4>G検定でのポイント</h4><p>教師あり学習や教師なし学習との違いを明確に理解することが重要です。強化学習は「明確な正解データ」がない代わりに、「行動の結果としての報酬」を頼りに学習を進めます。囲碁AIのAlphaGoが代表例としてよく挙げられます。</p>`,
+            'Transformer': `<h4>Transformer 詳細解説</h4><p>Transformerは、2017年にGoogleが発表した論文「Attention Is All You Need」で提唱された、主に自然言語処理で使われる画期的なニューラルネットワークモデルです。</p><p>G検定で押さえるべき技術的なポイントは以下の通りです。</p><ul><li><strong>RNN/CNNの不使用:</strong> 従来の主要モデルだったRNNやCNNの再帰・畳み込み構造を一切使わず、後述するAttention機構のみで構成されている点が最大の特徴です。</li><li><strong>自己注意機構 (Self-Attention):</strong> 文章中の単語間の関連度を直接計算する仕組みです。「彼はその犬を可愛がった。なぜなら、<strong>それ</strong>はとても人懐っこかったからだ。」という文で、「それ」が「犬」を指していることを直接的に関連付けられます。</li><li><strong>並列化による高速化:</strong> RNNのように逐次的に処理する必要がないため、GPUによる並列計算の恩恵を最大限に受けることができ、非常に大規模なデータでの学習が可能になりました。</li><li><strong>位置エンコーディング (Positional Encoding):</strong> 単語の順序情報を失ってしまうAttentionの欠点を補うため、各単語の位置情報をベクトルとして加算する技術です。</li></ul><h4>G検定でのポイント</h4><p>Transformerが、その後のBERTやGPTといった大規模言語モデル(LLM)の基盤技術となったという流れは非常に重要です。自然言語処理の歴史におけるブレークスルーとして認識しておきましょう。</p>`,
+            '混合行列 (Confusion Matrix)': `<h4>混合行列 詳細解説</h4><p>混合行列は、2値分類などの分類モデルの性能を詳細に評価するための表です。モデルの予測結果と実際の正解クラスを比較し、どのように間違えたのかを一目で把握できます。</p><p>G検定では、この表の4つの要素を正確に理解することが必須です。（例：「犬」を陽性、「猫」を陰性とする）</p><ul><li><strong>真陽性 (True Positive, TP):</strong> 実際に「犬」の画像を「犬」と正しく予測できた数。</li><li><strong>偽陽性 (False Positive, FP):</strong> 実際は「猫」の画像を、間違って「犬」と予測してしまった数。（第一種の過誤）</li><li><strong>真陰性 (True Negative, TN):</strong> 実際に「猫」の画像を「猫」と正しく予測できた数。</li><li><strong>偽陰性 (False Negative, FN):</strong> 実際は「犬」の画像を、間違って「猫」と予測してしまった数。（第二種の過誤）</li></ul><h4>G検定でのポイント</h4><p>この4つの要素から、<strong>適合率(Precision)</strong>、<strong>再現率(Recall)</strong>、<strong>F値</strong>といった重要な評価指標が計算されます。単に正解率(Accuracy)を見るだけでは、特に不均衡データの場合にモデルの性能を正しく評価できないため、これらの指標がなぜ重要なのかを理解しておくことが大切です。</p>`,
+            'GPU (Graphics Processing Unit)': `<h4>GPU (Graphics Processing Unit) 詳細解説</h4><p>GPUは、元々コンピュータグラフィックスの描画処理を高速化するために開発されたプロセッサです。単純な計算を大量に並列実行する能力に非常に長けています。</p><p>ディープラーニングでは、ニューラルネットワークの学習時に膨大な量の行列演算（積和演算）が発生します。この行列演算は、まさにGPUが得意とする単純な並列計算の塊です。そのため、CPUで学習させるよりも劇的に高速に処理を終えることができます。</p><h4>G検定でのポイント</h4><p>「ディープラーニングの発展はGPUの進化なくしてはあり得なかった」という点は非常に重要です。特にNVIDIA社が開発した<code>CUDA</code>という並列コンピューティングプラットフォームにより、GPUを汎用的な計算に利用する<code>GPGPU</code>という技術が普及し、AI研究が加速しました。この背景を理解しておきましょう。</p>`,
+            '説明可能なAI (XAI)':`<h4>説明可能なAI (XAI) 詳細解説</h4><p>説明可能なAI（Explainable AI, XAI）とは、AI、特にディープラーニングのように内部構造が複雑なモデルの判断理由や根拠を、人間が理解できる形で提示するための技術や研究分野のことです。</p><h4>なぜ重要か？</h4><p>AIの判断が「ブラックボックス」のままだと、以下のような問題が生じます。</p><ul><li><strong>信頼性の欠如:</strong> なぜその結論に至ったのか分からないと、ユーザーはAIの判断を信頼できません。特に医療診断や融資審査など、重要な意思決定で問題となります。</li><li><strong>公平性の担保:</strong> AIが意図せず不公平なバイアス（偏見）に基づいて判断していたとしても、それを発見・修正することが困難です。</li><li><strong>安全性の確保:</strong> 自動運転車がなぜ特定の操作をしたのか分からなければ、事故原因の究明や再発防止ができません。</li></ul><h4>G検定でのポイント</h4><p>GDPR（EU一般データ保護規則）では「説明を受ける権利」が明記されるなど、XAIは法規制や社会的な要請としても重要度が増しています。具体的な手法として、モデル全体の判断傾向を説明する<code>LIME</code>や<code>SHAP</code>、CNNが画像のどこに注目したかを可視化する<code>Grad-CAM</code>などの名称も覚えておくと良いでしょう。</p>`
+        };
+
         const searchInput = document.getElementById('searchInput');
         const categoryFilters = document.getElementById('categoryFilters');
         const termList = document.getElementById('termList');
         const noResults = document.getElementById('noResults');
-        const geminiModal = document.getElementById('geminiModal');
+        const explanationModal = document.getElementById('explanationModal');
         const modalTitle = document.getElementById('modalTitle');
         const closeModalBtn = document.getElementById('closeModalBtn');
-        const loadingSpinner = document.getElementById('loadingSpinner');
-        const geminiResponseEl = document.getElementById('geminiResponse');
+        const detailedExplanationEl = document.getElementById('detailedExplanation');
 
         let currentCategory = 'all';
 
@@ -274,7 +282,7 @@
                         <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full flex-shrink-0 ml-2 ${categoryColor[term.category] || 'bg-gray-700'}">${term.category}</span>
                     </div>
                     <p class="text-gray-400 font-light leading-relaxed flex-grow term-description">${term.description}</p>
-                    <button class="ask-gemini-btn absolute bottom-3 right-3 p-2 rounded-full bg-cyan-600/80 hover:bg-cyan-500 transition-all text-xl" title="AIによる詳細解説" data-term="${term.term}">
+                    <button class="show-explanation-btn absolute bottom-3 right-3 p-2 rounded-full bg-cyan-600/80 hover:bg-cyan-500 transition-all text-xl" title="詳細解説を見る" data-term="${term.term}">
                         ✨
                     </button>
                 `;
@@ -286,7 +294,7 @@
         const filterAndRender = () => {
             const searchTerm = searchInput.value.toLowerCase();
             
-            let filteredTerms = terms.filter(term => {
+            let filteredTerms = termsData.filter(term => {
                 const inCategory = currentCategory === 'all' || term.category === currentCategory;
                 const inSearch = term.term.toLowerCase().includes(searchTerm) || term.description.toLowerCase().includes(searchTerm);
                 return inCategory && inSearch;
@@ -295,87 +303,31 @@
             renderTerms(filteredTerms);
         };
         
-        // Gemini APIを呼び出す関数 (修正版)
-        const fetchGeminiResponse = async (term) => {
-            const prompt = `あなたはAI分野の専門家です。日本の「G検定」という資格試験の受験勉強をしています。専門用語「${term}」について、G検定で問われそうな要点を押さえつつ、初心者にも分かりやすく、より詳しく解説してください。必要であれば、箇条書きなども使って、構造的に説明してください。`;
-
-            let chatHistory = [{ role: "user", parts: [{ text: prompt }] }];
-            const payload = { contents: chatHistory };
-            const apiKey = ""; // APIキーは空のままにします
-            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
-
-            try {
-                const response = await fetch(apiUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-                
-                if (!response.ok) {
-                    throw new Error(`APIリクエストが失敗しました。ステータス: ${response.status} ${response.statusText}`);
-                }
-                
-                const result = await response.json();
-
-                if (result.candidates && result.candidates.length > 0 && result.candidates[0].content && result.candidates[0].content.parts[0]) {
-                    let text = result.candidates[0].content.parts[0].text;
-                    
-                    // MarkdownをHTMLに変換
-                    text = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-                    text = text.replace(/((?:^- .*(?:\r\n|\n|$))+)/gm, (match) => {
-                        const listItems = match.trim().split(/\r\n|\n/).map(item => `<li>${item.substring(2).trim()}</li>`).join('');
-                        return `<ul>${listItems}</ul>`;
-                    });
-                    text = text.replace(/\n/g, '<br>');
-
-                    geminiResponseEl.innerHTML = text;
-
-                } else if (result.promptFeedback) {
-                     let reason = result.promptFeedback.blockReason || '不明な理由';
-                     let safetyRatings = (result.promptFeedback.safetyRatings || []).map(r => `<li>${r.category}: ${r.probability}</li>`).join('');
-                     geminiResponseEl.innerHTML = `
-                        <p class="text-red-400 font-bold">AIへのリクエストがブロックされました。</p>
-                        <p class="text-gray-400 mt-2"><strong>理由:</strong> ${reason}</p>
-                        ${safetyRatings ? `<p class="text-gray-400 mt-2"><strong>詳細:</strong></p><ul class="list-disc list-inside text-gray-400 text-sm">${safetyRatings}</ul>` : ''}
-                        <p class="text-gray-300 mt-4">不適切な単語が含まれていないか確認し、もう一度お試しください。</p>
-                    `;
-                    console.warn('Prompt blocked by API:', result.promptFeedback);
-
-                } else {
-                    geminiResponseEl.textContent = 'AIからの応答を解析できませんでした。レスポンスの形式が不正か、コンテンツがありません。';
-                     console.warn('Unexpected API response structure:', result);
-                }
-            } catch (error) {
-                 geminiResponseEl.innerHTML = `<p class="text-red-400">エラーが発生しました: ${error.message}。</p><p class="mt-2 text-gray-400">ネットワーク接続を確認するか、しばらくしてから再度お試しください。この環境ではセキュリティ上の理由でAPI呼び出しが制限されている可能性があります。</p>`;
-                 console.error('Error fetching Gemini response:', error);
-            } finally {
-                loadingSpinner.classList.add('hidden');
-                geminiResponseEl.classList.remove('hidden');
-            }
+        // モーダルにサンプル回答を表示する関数
+        const showDetailedExplanation = (term) => {
+            const explanation = detailedExplanations[term] || `<p>ごめんね、この単語の詳しい解説はまだ準備中なんだ…！</p><p>でも、「強化学習」「Transformer」「混合行列」「GPU」「説明可能なAI (XAI)」などは詳しい解説が見れるから試してみてね！</p>`;
+            detailedExplanationEl.innerHTML = explanation;
         };
 
         // モーダルを開く関数
         const openModal = (term) => {
-            modalTitle.textContent = `Geminiに「${term}」を質問`;
-            geminiResponseEl.innerHTML = '';
-            geminiResponseEl.classList.add('hidden');
-            loadingSpinner.classList.remove('hidden');
-            geminiModal.classList.remove('hidden');
-            geminiModal.classList.add('flex');
+            modalTitle.textContent = `「${term}」の詳細解説`;
+            showDetailedExplanation(term);
+            explanationModal.classList.remove('hidden');
+            explanationModal.classList.add('flex');
             setTimeout(() => {
-                geminiModal.classList.add('opacity-100');
-                geminiModal.querySelector('.transform').classList.add('scale-100');
+                explanationModal.classList.add('opacity-100');
+                explanationModal.querySelector('.transform').classList.add('scale-100');
             }, 10);
-            fetchGeminiResponse(term);
         };
-        
+
         // モーダルを閉じる関数
         const closeModal = () => {
-            geminiModal.classList.remove('opacity-100');
-            geminiModal.querySelector('.transform').classList.remove('scale-100');
+            explanationModal.classList.remove('opacity-100');
+            explanationModal.querySelector('.transform').classList.remove('scale-100');
             setTimeout(() => {
-                geminiModal.classList.add('hidden');
-                geminiModal.classList.remove('flex');
+                explanationModal.classList.add('hidden');
+                explanationModal.classList.remove('flex');
             }, 300);
         };
 
@@ -393,7 +345,7 @@
         });
 
         termList.addEventListener('click', (e) => {
-            const btn = e.target.closest('.ask-gemini-btn');
+            const btn = e.target.closest('.show-explanation-btn');
             if (btn) {
                 const term = btn.dataset.term;
                 openModal(term);
@@ -401,8 +353,8 @@
         });
         
         closeModalBtn.addEventListener('click', closeModal);
-        geminiModal.addEventListener('click', (e) => {
-            if (e.target === geminiModal) {
+        explanationModal.addEventListener('click', (e) => {
+            if (e.target === explanationModal) {
                 closeModal();
             }
         });
