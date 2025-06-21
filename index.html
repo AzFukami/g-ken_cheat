@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>G検定 最強チートシート (全解説表示版)</title>
+    <title>G検定 最強チートシート (全解説表示・最終決定版)</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -192,7 +192,7 @@
             { term: '著作権法', category: '法律・倫理', description: '著作物と著作者の権利を保護する法律。<strong>【具体例】</strong>インターネット上のイラストを無断で大量に学習データとして利用し、作風を模倣した画像を生成するAIサービスは、著作権侵害となる可能性がある。', detailed: `<h4>著作権法 詳細解説</h4><p>小説、音楽、絵画、プログラムなどの「著作物」を創作した者（著作者）に与えられる権利を保護する法律です。AIとの関係では、①AIの学習データとして著作物を利用することの可否、②AIが生成したコンテンツの著作権は誰に帰属するのか、という2点が大きな論点となります。</p><h4>G検定でのポイント</h4><p>AIの学習データとしてWeb上のコンテンツを利用する場合や、画像生成AIの出力など、AIと著作権の問題はG検定でも頻出のトピックです。思想や感情の創作的な表現が保護対象であり、単なるデータは対象外であるという基本を理解しておきましょう。</p>` },
             { term: 'GDPR (一般データ保護規則)', category: '法律・倫理', description: 'EUにおける個人のデータ保護とプライバシーに関する包括的な法律。<strong>【具体例】</strong>日本の企業がEU居住者向けにサービスを提供する場合、Cookie利用の同意を明確に取得したり、ユーザーからのデータ削除要求に応じたりする必要がある。', detailed: `<h4>GDPR 詳細解説</h4><p>EU（欧州連合）における、個人データ保護のための包括的な法的枠組みです。非常に厳格なルールを定めており、違反した場合には多額の制裁金が課される可能性があります。プロファイリングのような自動化された処理に対して「説明を受ける権利」などを定めている点も特徴です。</p><h4>G検定でのポイント</h4><p>EU域内の個人データを扱うすべての事業者が対象となるため、日本の企業も無関係ではありません。「忘れられる権利」や「データポータビリティの権利」など、個人の権利を強く保護している点が特徴です。</p>` },
             { term: 'AI開発原則', category: '法律・倫理', description: '内閣府が示した、AI開発者が遵守すべき原則。「人間の尊厳」「多様性・公平性」「プライバシーの確保」「セキュリティ」「透明性」などが含まれる。', detailed: `<h4>AI開発原則 詳細解説</h4><p>AIが社会に受け入れられ、適切に利用されるために、開発者や提供者がどのような点に配慮すべきかを示した倫理的な指針です。多くの国や組織が同様の原則を発表しており、内容は共通する部分が多いです。</p><h4>G検定でのポイント</h4><p>これらは法的な拘束力を持つものではありませんが（ソフトロー）、AIを開発・利用する上で遵守すべき倫理的な指針として、国内外の多くの組織が同様の原則を公表しています。</p>` },
-            { term: '説明可能なAI (XAI)', category: '法律・倫理', description: 'AIの判断根拠を人間が理解・解釈できるようにするための技術。<strong>【技術詳細】</strong>判断に寄与した特徴量を可視化するLIMEやSHAP、CNNの判断根拠を可視化するGrad-CAMなどの手法がある。', detailed: `<h4>なぜ重要か？</h4><p>AIの判断が「ブラックボックス」のままだと、以下のような問題が生じます。</p><ul><li><strong>信頼性の欠如:</strong> なぜその結論に至ったのか分からないと、ユーザーはAIの判断を信頼できません。特に医療診断や融資審査など、重要な意思決定で問題となります。</li><li><strong>公平性の担保:</strong> AIが意図せず不公平なバイアス（偏見）に基づいて判断していたとしても、それを発見・修正することが困難です。</li><li><strong>安全性の確保:</strong> 自動運転車がなぜ特定の操作をしたのか分からなければ、事故原因の究明や再発防止ができません。</li></ul><h4>G検定でのポイント</h4><p>GDPR（EU一般データ保護規則）では「説明を受ける権利」が明記されるなど、XAIは法規制や社会的な要請としても重要度が増しています。具体的な手法として、モデル全体の判断傾向を説明する<code>LIME</code>や<code>SHAP</code>、CNNが画像のどこに注目したかを可視化する<code>Grad-CAM</code>などの名称も覚えておくと良いでしょう。</p>` },
+            { term: '説明可能なAI (XAI)', category: '法律・倫理', description: 'AIの判断根拠を人間が理解・解釈できるようにするための技術。<strong>【技術詳細】</strong>判断に寄与した特徴量を可視化するLIMEやSHAP、CNNの判断根拠を可視化するGrad-CAMなどの手法がある。', detailed: `<h4>説明可能なAI (XAI) 詳細解説</h4><p>説明可能なAI（Explainable AI, XAI）とは、AI、特にディープラーニングのように内部構造が複雑なモデルの判断理由や根拠を、人間が理解できる形で提示するための技術や研究分野のことです。</p><h4>なぜ重要か？</h4><p>AIの判断が「ブラックボックス」のままだと、以下のような問題が生じます。</p><ul><li><strong>信頼性の欠如:</strong> なぜその結論に至ったのか分からないと、ユーザーはAIの判断を信頼できません。特に医療診断や融資審査など、重要な意思決定で問題となります。</li><li><strong>公平性の担保:</strong> AIが意図せず不公平なバイアス（偏見）に基づいて判断していたとしても、それを発見・修正することが困難です。</li><li><strong>安全性の確保:</strong> 自動運転車がなぜ特定の操作をしたのか分からなければ、事故原因の究明や再発防止ができません。</li></ul><h4>G検定でのポイント</h4><p>GDPR（EU一般データ保護規則）では「説明を受ける権利」が明記されるなど、XAIは法規制や社会的な要請としても重要度が増しています。具体的な手法として、モデル全体の判断傾向を説明する<code>LIME</code>や<code>SHAP</code>、CNNが画像のどこに注目したかを可視化する<code>Grad-CAM</code>などの名称も覚えておくと良いでしょう。</p>` },
             { term: 'アルゴリズムの公平性 / バイアス', category: '法律・倫理', description: 'AIモデルが、特定の属性に基づいて不公平な判断を下してしまう問題。<strong>【具体例】</strong>過去の採用データに男性が多いという偏りがあった場合、それを学習したAIが男性を優先的に採用してしまう「ジェンダーバイアス」。', detailed: `<h4>アルゴリズムの公平性 / バイアス 詳細解説</h4><p>AIは、学習に用いたデータに含まれる偏見（バイアス）を学習し、増幅させてしまうことがあります。例えば、過去のデータに基づいて採用AIを作った場合、特定の性別や人種を不当に有利／不利に扱ってしまう可能性があります。これは、AI倫理における非常に重要な課題です。</p><h4>G検定でのポイント</h4><p>学習データに含まれる社会的な偏見をAIが増幅・再生産してしまうリスクが問題視されています。採用、融資、司法など、社会的に重要な分野でのAI利用において特に重要な課題です。</p>` },
             { term: 'フレーム問題', category: '法律・倫理', description: 'AIにおける重要な哲学的問題。「ある行動を実行する際に、考慮すべき有限の事柄と、無関係で考慮しなくてよい事柄を、どうやって限定するのか」という問題。', detailed: `<h4>フレーム問題 詳細解説</h4><p>ロボットが「部屋の中にある時限爆弾を部屋の外に出す」というタスクを実行するシナリオで有名です。ロボットは、行動によって「変化すること」だけでなく、膨大な「変化しないこと」（例：壁の色は変わらない、天井は落ちてこない）まで考慮し始めてしまい、計算が終わらず行動不能に陥ります。</p><h4>G検定でのポイント</h4><p>記号的AIが直面した根源的な困難さを示す問題です。「人間は常識によって無関係なことを自然に無視しているが、コンピュータにそれをどう教えるか」という問題とも言えます。</p>` },
             { term: 'シンボルグラウンディング問題', category: '法律・倫理', description: 'AIが扱う記号（シンボル）が、実世界の意味とどのように結びついているのか（接地しているのか）という問題。記号処理だけでは真の知能とは言えないという批判。', detailed: `<h4>シンボルグラウンディング問題 詳細解説</h4><p>コンピュータは「犬」という単語を記号として処理できますが、その記号が、現実世界にいる温かくて毛むくじゃらの動物としての「犬」の実体と結びついているわけではありません。この記号と実体の結びつき（接地＝グラウンディング）がなければ、AIは本当の意味で世界を理解しているとは言えない、という哲学的な問題です。</p><h4>G検定でのポイント</h4><p>「中国語の部屋」の思考実験とも関連する哲学的な問題です。例えば、AIが「犬」という記号（単語）を扱えても、それが実世界の「犬」という存在と結びついていなければ、真に理解しているとは言えない、という議論です。</p>` },
@@ -215,10 +215,6 @@
         const categoryFilters = document.getElementById('categoryFilters');
         const termList = document.getElementById('termList');
         const noResults = document.getElementById('noResults');
-        const explanationModal = document.getElementById('explanationModal');
-        const modalTitle = document.getElementById('modalTitle');
-        const closeModalBtn = document.getElementById('closeModalBtn');
-        const detailedExplanationEl = document.getElementById('detailedExplanation');
 
         let currentCategory = 'all';
 
@@ -256,7 +252,7 @@
                     </div>
                     <div class="text-gray-400 font-light leading-relaxed flex-grow term-description">
                         <p>${term.description}</p>
-                        <div class="mt-4 detailed-explanation">${detailedExplanations[term.term]}</div>
+                        <div class="mt-4 detailed-explanation">${term.detailed}</div>
                     </div>
                 `;
                 termList.appendChild(card);
@@ -272,7 +268,7 @@
                 // Update search to include detailed explanation text
                 const inSearch = term.term.toLowerCase().includes(searchTerm) || 
                                  term.description.toLowerCase().includes(searchTerm) ||
-                                 detailedExplanations[term.term].toLowerCase().includes(searchTerm);
+                                 term.detailed.toLowerCase().includes(searchTerm);
                 return inCategory && inSearch;
             });
             
